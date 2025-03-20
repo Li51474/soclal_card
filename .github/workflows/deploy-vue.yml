@@ -1,0 +1,32 @@
+name: Deploy Vue Project
+
+on:
+  push:
+    branches:
+      - main  # 触发条件：推送代码到main分支
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # 使用Ubuntu最新版本作为运行环境
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4  # 检出代码
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  # 设置Node.js版本
+
+      - name: Install Dependencies
+        run: npm install  # 安装项目依赖
+
+      - name: Build Project
+        run: npm run build  # 构建项目
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # 构建后的文件所在目录
+          force_orphan: true  # 防止删除dist目录中的文件
