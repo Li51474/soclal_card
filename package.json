@@ -1,0 +1,18 @@
+{
+    "name": "social-card",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "deploy": "gh-pages -d dist"
+    },
+    "dependencies": {
+        "vue": "^3.5.13"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.2.1",
+        "gh-pages": "^6.3.0",
+        "vite": "^6.1.0",
+        "vite-plugin-vue-devtools": "^7.7.2"
+    }
+}
